@@ -1,0 +1,385 @@
+/* == import fonts == */
+@import url("https://fonts.googleapis.com/css2?family=Fugaz+One&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap"); /** font-family: "Roboto", sans-serif; */
+/* ==== ROZSZERZONY CSS RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+figure,
+ul,
+h1,
+h2,
+h3,
+hr,
+header p,
+.table {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+}
+/* ==== VARIABLES ====*/
+:root {
+  /* fonts */
+  /** font-family */
+  --FF: "Roboto", sans-serif;
+  --FF-HEADINGS: "Fugaz One", cursive;
+  /** font-size */
+  --FS-M: 1.5rem;
+  --FS-L: 2rem;
+  --FS-XL: 3rem;
+  /* color */
+  --BGCOLOR: hsl(205, 19%, 78%); /* */
+  --BGFILTER: rgba(151, 151, 151, 0.452);
+  --RADIAL-COLOR: rgb(226, 226, 226);
+  --ALTBG: #1e293b;
+  --LIGHT-COLOR: whitesmoke;
+  --DARK-COLOR: #080808;
+  --HEADER-COLOR: white;
+  /* padding */
+  --PADDING-S: 0.5rem;
+  --PADDING-M: 1rem;
+  /* shadows */
+  --SHADOW-L: 1px 1px 10px 0px black;
+  --SHADOW-S: 1px 1px 5px 0px black;
+  /* general */
+  --BORDERS-S-D: 1px solid black;
+  --BORDERS-M-D: 1.5px solid black;
+}
+
+/*? DARK MODE */
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --BGCOLOR: hsl(205, 20%, 38%);
+    --BGFILTER: rgba(80, 80, 80, 0.452);
+    --RADIAL-COLOR: rgb(143, 143, 143);
+    --DARK-COLOR: #000000;
+    --HEADER-COLOR: whitesmoke;
+  }
+} */
+
+/* ==== GENERAL SETTINGS ====*/
+
+body {
+  max-width: 800px;
+  min-height: 100vh;
+  margin: 0 auto; /** center body */
+  margin-bottom: 0.5rem;
+  background-color: var(--BGCOLOR);
+  border: var(--BORDERS-M-D);
+  text-align: center;
+  box-shadow: 0px 0px 5px;
+
+  display: flex;
+  flex-direction: column;
+  /** font */
+  font-family: var(--FF);
+  font-size: 1.5rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+header,
+main,
+footer {
+  background-image: linear-gradient(
+    to top right,
+    var(--RADIAL-COLOR),
+    var(--BGCOLOR)
+  );
+}
+
+p,
+figcaption {
+  color: var(--DARK-COLOR);
+}
+
+/* ==== HEADERS STATIC ====*/
+
+h1 {
+  font-size: 3rem;
+  padding: var(--PADDING-S);
+  border-top: 2px solid #333;
+  border-bottom: 2px solid #333;
+}
+
+h2,
+h3 {
+  border-top: var(--BORDERS-M-D);
+  border-bottom: var(--BORDERS-M-D);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--FF-HEADINGS);
+  background-color: #aba0a0; /** background backup */
+  background-color: var(--BGFILTER); /** making background lighter */
+  color: var(--HEADER-COLOR);
+}
+
+.h-background {
+  background-image: url("img/backgrounds/pat1.png");
+}
+
+p {
+  padding: 1rem;
+  text-align: justify;
+}
+
+hr {
+  color: whitesmoke;
+}
+
+/* ==== TOP NAVBAR, (sticky, inline) ====*/
+nav {
+  border: solid black;
+  border-width: 1.5px 0px;
+}
+
+header nav ul {
+  list-style-type: none;
+  font-size: 1.5rem;
+
+  /** grid start */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 50% 50%;
+}
+
+header nav a {
+  /* flexbox to ensure after wrapping everything centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  text-decoration: none;
+  color: var(--HEADER-COLOR);
+  transition: background-color 0.3s;
+  transition: font-size 0.3s;
+  /** borders on nav */
+  border-right: var(--BORDERS-S-D);
+}
+header nav li:last-of-type a {
+  border-right: none;
+}
+
+header nav li a:hover {
+  box-shadow: var(--SHADOW-L);
+  background-color: hsl(0, 0%, 69%);
+  color: white;
+  transform: scale(1.1);
+  border: var(--BORDERS-S-D);
+}
+
+.sticky {
+  background-color: gray;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ==== BLOCK CONTENT when click to many times ==== */
+.container {
+  opacity: 0;
+  z-index: -1;
+  position: fixed;
+  max-width: 800px;
+  height: 100%;
+
+  background-color: black;
+  background-image: url(img/Joseph/CONTENTBLOCKED526x934.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  /** use Flexbox */
+  display: flex;
+  /** center horizontally and vertically */
+  justify-content: center;
+  align-items: center;
+
+  font-size: 3.5rem;
+  font-weight: bolder;
+  color: rgba(255, 0, 0, 0.822);
+  text-shadow: 3px 3px 3px black;
+}
+
+.content .content {
+  color: transparent;
+}
+/* ==== MAIN IMAGES ==== */
+
+header img {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  height: auto;
+
+  border: var(--BORDERS-S-D);
+  border-radius: 1rem;
+  box-shadow: var(--SHADOW-S);
+}
+
+.header__image-large {
+  max-width: 60%;
+  height: auto;
+  box-shadow: 20px 0 10px #333;
+}
+.header__image-large:hover {
+  cursor: pointer;
+}
+
+main div.card {
+  border-radius: 0; /*? why do I need that?*/
+}
+
+/* ==== GALLERY ==== */
+
+.gallerycontainer {
+  margin: 0.5rem;
+
+  display: grid;
+  gap: 0.5rem;
+
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-auto-rows: 240px;
+}
+
+div.card {
+  /* border: var(--BORDERS-S-D); */
+  display: block;
+  min-height: 100px;
+  min-width: 100px;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  transition: background-color 0.7s;
+  /** doesnt work --> transition: background-size 1s; */
+}
+
+div.card:hover {
+  padding: var(--PADDING-M);
+  background-size: contain;
+  background-color: hsl(205, 19%, 78%);
+  border: none;
+}
+/* ==== IFRAME ====*/
+
+iframe {
+  margin: 1rem;
+  max-width: 100%;
+  text-align: center;
+  border: var(--BORDERS-S-D);
+}
+/* ==== BUTTON AWARDS ====*/
+
+button {
+  margin: 1rem;
+  font-size: 3rem;
+}
+button:hover {
+  cursor: help;
+  background-color: gold;
+}
+
+/* ==== CUSTOM TOOLTIPS ====*/
+
+.tooltip_test {
+  border-bottom: 2px dashed red;
+  position: relative;
+}
+.tooltip_test:hover::before {
+  padding: var(--PADDING-M);
+  content: attr(data-tooltip);
+  white-space: nowrap;
+
+  position: absolute;
+  top: -30px;
+
+  border-radius: 15px;
+
+  background-color: var(--DARK-COLOR);
+  color: white;
+}
+/*! ==== ==== MEDIA QUERIES ==== ==== */
+/* = Medium Size = */
+@media screen and (min-width: 600px) {
+  div.card.tall {
+    grid-row: span 2 / auto;
+  }
+  div.card.wide {
+    grid-column: span 2 / auto;
+  }
+  div.card.tall_wide {
+    grid-column: span 2 / auto;
+    grid-row: span 2 / auto;
+  }
+
+  header nav ul {
+    /* grid  */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: none;
+  }
+
+  header img {
+    margin-top: 1rem;
+    max-width: 80%;
+    height: auto;
+
+    border: var(--BORDERS-S-D);
+    border-radius: 1rem;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header nav a {
+    border-top: var(--BORDERS-S-D);
+  }
+  header nav li:last-of-type a {
+    border-right: var(--BORDERS-S-D);
+  }
+  header nav li:nth-last-of-type(3) {
+    border-bottom: var(--BORDERS-S-D);
+  }
+  h2 .nowrap {
+    white-space: normal;
+  }
+}
+
+/*! ==== ==== END MQ ==== ==== */
+
+/* ==== UTILITY CLASSES ====*/
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.filter_test {
+  color: hsl(49, 100%, 27%);
+}
+.filter_test:hover {
+  /* filter: brightness(150%); */
+  filter: hue-rotate(50deg);
+}
+
+.offscreen {
+  position: absolute;
+  left: -10000px;
+}
+
+.center {
+  text-align: center;
+}
+.toleft {
+  text-align: left;
+}
